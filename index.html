@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERMINAL FORCE | Cyber Security & Ethical Hacking</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#05070A',
+                        cardBg: '#0A0F1D',
+                        neonBlue: '#00A3FF',
+                        neonCyan: '#00F0FF',
+                        neonGreen: '#00FF66',
+                        darkCard: 'rgba(10, 15, 29, 0.8)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    boxShadow: {
+                        'neon': '0 0 20px rgba(0, 163, 255, 0.4)',
+                        'neon-cyan': '0 0 25px rgba(0, 240, 255, 0.5)',
+                        'neon-green': '0 0 20px rgba(0, 255, 102, 0.4)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Styling & Cyberpunk Aesthetics */
+        body {
+            background-color: #05070A;
+            color: #F8FAFC;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Digital Background Grid */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 163, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 163, 255, 0.05) 1px, transparent 1px);
+        }
+
+        /* Scanline Overlay */
+        .scanlines {
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0, 0, 0, 0.3) 50%,
+                rgba(0, 0, 0, 0.3)
+            );
+            background-size: 100% 4px;
+        }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(10, 15, 29, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 163, 255, 0.2);
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(0, 240, 255, 0.5);
+            box-shadow: 0 0 25px rgba(0, 163, 255, 0.25);
+        }
+
+        /* Glitch Animation */
+        .glitch {
+            position: relative;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #00F0FF;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #00A3FF, 0 2px #00FF66;
+            clip: rect(85px, 450px, 140px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(31px, 9999px, 94px, 0); }
+            10% { clip: rect(112px, 9999px, 76px, 0); }
+            20% { clip: rect(85px, 9999px, 5px, 0); }
+            30% { clip: rect(27px, 9999px, 119px, 0); }
+            40% { clip: rect(64px, 9999px, 42px, 0); }
+            50% { clip: rect(110px, 9999px, 15px, 0); }
+            60% { clip: rect(22px, 9999px, 88px, 0); }
+            70% { clip: rect(95px, 9999px, 130px, 0); }
+            80% { clip: rect(48px, 9999px, 63px, 0); }
+            90% { clip: rect(120px, 9999px, 10px, 0); }
+            100% { clip: rect(15px, 9999px, 90px, 0); }
+        }
+
+        @keyframes glitch-anim2 {
+            0% { clip: rect(76px, 9999px, 112px, 0); }
+            10% { clip: rect(15px, 9999px, 45px, 0); }
+            20% { clip: rect(90px, 9999px, 120px, 0); }
+            30% { clip: rect(40px, 9999px, 10px, 0); }
+            40% { clip: rect(105px, 9999px, 80px, 0); }
+            50% { clip: rect(55px, 9999px, 135px, 0); }
+            60% { clip: rect(20px, 9999px, 65px, 0); }
+            70% { clip: rect(130px, 9999px, 95px, 0); }
+            80% { clip: rect(60px, 9999px, 20px, 0); }
+            90% { clip: rect(115px, 9999px, 110px, 0); }
+            100% { clip: rect(35px, 9999px, 75px, 0); }
+        }
+
+        /* Terminal Cursor Blink */
+        .terminal-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 18px;
+            background-color: #00FF66;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            50.1%, 100% { opacity: 0; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #05070A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00A3FF;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00F0FF;
+        }
+    </style>
+</head>
+<body class="bg-grid relative selection:bg-neonBlue selection:text-black">
+
+    <!-- Canvas for Particle Background -->
+    <canvas id="particle-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-neonBlue to-neonCyan z-50 transition-all duration-150" style="width: 0%;"></div>
+
+    <!-- NAVBAR -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 glass-panel border-b border-neonBlue/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-lg bg-neonBlue/10 border border-neonBlue flex items-center justify-center text-neonCyan font-mono font-bold text-xl group-hover:shadow-neon transition-all">
+                    >_
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-mono font-bold text-lg tracking-wider text-white group-hover:text-neonCyan transition-colors">TERMINAL<span class="text-neonBlue">FORCE</span></span>
+                    <span class="text-[10px] text-gray-400 font-mono tracking-widest uppercase">Cyber Security Team</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="#home" class="text-gray-300 hover:text-neonCyan transition-colors">Home</a>
+                <a href="#about" class="text-gray-300 hover:text-neonCyan transition-colors">About</a>
+                <a href="#divisions" class="text-gray-300 hover:text-neonCyan transition-colors">Divisions</a>
+                <a href="#projects" class="text-gray-300 hover:text-neonCyan transition-colors">Projects</a>
+                <a href="#terminal" class="text-gray-300 hover:text-neonCyan transition-colors flex items-center gap-1.5"><i class="fa-solid fa-terminal text-neonGreen text-xs"></i> CLI</a>
+                <a href="#knowledge" class="text-gray-300 hover:text-neonCyan transition-colors">Knowledge</a>
+                <a href="#team" class="text-gray-300 hover:text-neonCyan transition-colors">Team</a>
+                <a href="#contact" class="text-gray-300 hover:text-neonCyan transition-colors">Contact</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden md:flex items-center">
+                <button onclick="openModal('joinModal')" class="relative group overflow-hidden rounded-lg px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-black bg-neonCyan hover:bg-neonBlue transition-all shadow-neon-cyan">
+                    <span class="relative z-10 flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved"></i> JOIN THE FORCE
+                    </span>
+                </button>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-btn" class="md:hidden text-gray-300 hover:text-neonCyan text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-neonBlue/20 px-6 py-6 space-y-4">
+            <a href="#home" class="block text-gray-300 hover:text-neonCyan font-medium mobile-link">Home</a>
+            <a href="#about" class="block text-gray-300 hover:text-neonCyan font-medium mobile-link">About</a>
+            <a href="#divisions" class="block text-gray-300 hover:text-neonCyan font-medium mobile-link">Divisions</a>
+            <a href="#projects" class="block text-gray-300 hover:text-neonCyan font-medium mobile-link">Projects</a>
+            <a href="#terminal" class="block text-gray-300 hover:text-neonCyan font-medium mobile-link">Interactive Terminal</a>
+            <a href="#knowledge" class="block text-gray-300 hover:text-neonCyan font-medium mobile-link">Knowledge</a>
+            <a href="#team" class="block text-gray-300 hover:text-neonCyan font-medium mobile-link">Team</a>
+            <a href="#contact" class="block text-gray-300 hover:text-neonCyan font-medium mobile-link">Contact</a>
+            <div class="pt-2">
+                <button onclick="openModal('joinModal')" class="w-full py-3 text-center rounded-lg font-mono text-xs font-bold uppercase text-black bg-neonCyan shadow-neon-cyan">
+                    JOIN THE FORCE
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-screen flex items-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 z-10">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Column: Hero Text -->
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-neonBlue/10 border border-neonBlue/30 text-neonCyan font-mono text-xs">
+                    <span class="w-2 h-2 rounded-full bg-neonGreen animate-ping"></span>
+                    SECURE PROTOCOL ACTIVE v4.8
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight uppercase glitch" data-text="WE ARE TERMINAL FORCE">
+                    WE ARE <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonBlue to-neonCyan">TERMINAL FORCE</span>
+                </h1>
+
+                <p class="font-mono text-neonCyan text-base sm:text-lg tracking-wide">
+                    "ACCESS THE UNKNOWN. SECURE THE FUTURE."
+                </p>
+
+                <p class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                    The Digital Frontier Is Our Battlefield. Kami adalah kolektif peneliti keamanan siber, praktisi ethical hacking, dan pembela digital yang berdedikasi membangun pertahanan siber masa depan melalui edukasi, riset, dan kolaborasi legal.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#about" class="w-full sm:w-auto px-8 py-3.5 rounded-lg bg-neonBlue hover:bg-neonCyan text-black font-mono font-bold text-sm tracking-wider uppercase transition-all shadow-neon flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-compass"></i> EXPLORE OUR MISSION
+                    </a>
+                    <a href="#team" class="w-full sm:w-auto px-8 py-3.5 rounded-lg glass-panel hover:border-neonCyan text-white font-mono font-bold text-sm tracking-wider uppercase transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-users"></i> MEET THE TEAM
+                    </a>
+                </div>
+
+                <!-- Quick Stats Badge Row -->
+                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-neonBlue/20 max-w-lg mx-auto lg:mx-0">
+                    <div>
+                        <div class="font-mono text-2xl font-bold text-neonCyan stat-counter" data-target="36">0</div>
+                        <div class="text-xs text-gray-400">Security Labs</div>
+                    </div>
+                    <div>
+                        <div class="font-mono text-2xl font-bold text-neonBlue stat-counter" data-target="142">0</div>
+                        <div class="text-xs text-gray-400">CTF Challenges</div>
+                    </div>
+                    <div>
+                        <div class="font-mono text-2xl font-bold text-neonGreen stat-counter" data-target="99">0</div>
+                        <div class="text-xs text-gray-400">% Secure</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Simulated Terminal -->
+            <div class="lg:col-span-5">
+                <div class="glass-panel rounded-xl overflow-hidden shadow-2xl border border-neonBlue/30">
+                    <!-- Terminal Header -->
+                    <div class="bg-black/60 px-4 py-3 flex items-center justify-between border-b border-neonBlue/20">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                        </div>
+                        <div class="font-mono text-xs text-gray-400 flex items-center gap-1.5">
+                            <i class="fa-solid fa-terminal text-neonBlue"></i> root@terminal-force:~
+                        </div>
+                        <div class="text-xs text-gray-500 font-mono">bash</div>
+                    </div>
+                    <!-- Terminal Content -->
+                    <div class="p-6 font-mono text-xs sm:text-sm space-y-3 bg-black/80 h-80 overflow-y-auto scanlines" id="hero-terminal-output">
+                        <div class="text-gray-400"># Terminal Force Core Initialization v4.8</div>
+                        <div class="text-neonCyan">root@terminal-force:~$ initialize_security_protocol</div>
+                        <div class="text-neonGreen">[OK] System kernel secured</div>
+                        <div class="text-neonGreen">[OK] Defensive modules loaded successfully</div>
+                        <div class="text-neonGreen">[OK] Threat monitoring & IDS active</div>
+                        <div class="text-neonBlue">[INFO] Welcome to TERMINAL FORCE repository.</div>
+                        <div class="text-gray-300">Type <span class="text-neonCyan">help</span> in interactive CLI below for available commands.</div>
+                        <div class="flex items-center gap-2 pt-2">
+                            <span class="text-neonGreen">visitor@terminal-force:~$</span>
+                            <span class="text-white animate-pulse">ready_for_payload</span>
+                            <span class="terminal-cursor"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section id="about" class="py-24 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-neonBlue/10 bg-black/40">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="font-mono text-xs text-neonCyan uppercase tracking-widest bg-neonBlue/10 px-3 py-1 rounded-full border border-neonBlue/30">
+                    // WHO WE ARE
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold mt-4 uppercase tracking-tight">
+                    BUILDING THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonBlue to-neonCyan">DEFENSIVE GRID</span>
+                </h2>
+                <p class="text-gray-400 mt-4 text-sm sm:text-base leading-relaxed">
+                    TERMINAL FORCE adalah tim yang berfokus pada pembelajaran keamanan siber, penelitian keamanan digital, pengembangan keterampilan teknis, dan penerapan ethical hacking secara bertanggung jawab dan legal.
+                </p>
+            </div>
+
+            <!-- 4 Info Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="glass-panel p-6 rounded-xl relative group transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-14 h-14 rounded-lg bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan text-2xl mb-6 group-hover:bg-neonBlue group-hover:text-black transition-all">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="font-mono font-bold text-lg text-white mb-3">Cybersecurity Research</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                        Analisis mendalam terhadap kerentanan sistem, zero-day research, dan pemahaman protokol jaringan modern secara etis.
+                    </p>
+                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-neonBlue to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-panel p-6 rounded-xl relative group transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-14 h-14 rounded-lg bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan text-2xl mb-6 group-hover:bg-neonBlue group-hover:text-black transition-all">
+                        <i class="fa-solid fa-user-secret"></i>
+                    </div>
+                    <h3 class="font-mono font-bold text-lg text-white mb-3">Ethical Hacking</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                        Simulasi penetration testing, authorized auditing, dan evaluasi keamanan aplikasi web serta infrastruktur jaringan.
+                    </p>
+                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-neonBlue to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-panel p-6 rounded-xl relative group transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-14 h-14 rounded-lg bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan text-2xl mb-6 group-hover:bg-neonBlue group-hover:text-black transition-all">
+                        <i class="fa-solid fa-shield-virus"></i>
+                    </div>
+                    <h3 class="font-mono font-bold text-lg text-white mb-3">Digital Defense</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                        Implementasi sistem pertahanan berlapis, firewall configuration, threat hunting, dan insiden respons darurat.
+                    </p>
+                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-neonBlue to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-panel p-6 rounded-xl relative group transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-14 h-14 rounded-lg bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan text-2xl mb-6 group-hover:bg-neonBlue group-hover:text-black transition-all">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                    </div>
+                    <h3 class="font-mono font-bold text-lg text-white mb-3">Security Awareness</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                        Edukasi publik dan komunitas mengenai literasi digital yang aman, pencegahan phishing, dan higienitas sandi.
+                    </p>
+                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-neonBlue to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DIVISIONS SECTION -->
+    <section id="divisions" class="py-24 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-neonBlue/10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="font-mono text-xs text-neonCyan uppercase tracking-widest bg-neonBlue/10 px-3 py-1 rounded-full border border-neonBlue/30">
+                    // SPECIALIZED UNITS
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold mt-4 uppercase tracking-tight">
+                    OUR <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonBlue to-neonCyan">DIVISIONS</span>
+                </h2>
+                <p class="text-gray-400 mt-4 text-sm sm:text-base">
+                    Unit spesialisasi taktis yang menggerakkan operasional riset dan pertahanan TERMINAL FORCE.
+                </p>
+            </div>
+
+            <!-- Divisions Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Division 1 -->
+                <div class="glass-panel p-8 rounded-xl flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-lg bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-xl font-mono">
+                                <i class="fa-solid fa-skull-crossbones"></i>
+                            </span>
+                            <span class="font-mono text-xs text-red-400 bg-red-500/10 px-2.5 py-1 rounded border border-red-500/20">UNIT 01</span>
+                        </div>
+                        <h3 class="font-mono font-bold text-xl text-white mb-3">RED TEAM</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-6">
+                            Simulasi serangan secara legal dan terkontrol untuk menguji ketahanan sistem, penetration testing, serta evaluasi postur keamanan organisasi dengan izin penuh.
+                        </p>
+                    </div>
+                    <button onclick="openDivisionModal('Red Team', 'Unit ofensif yang mensimulasikan taktik, teknik, dan prosedur (TTP) adversary nyata untuk menguji ketahanan infrastruktur organisasi secara terkontrol dan legal.')" class="w-full py-2.5 rounded-lg border border-red-500/40 text-red-400 hover:bg-red-500 hover:text-black font-mono text-xs font-bold uppercase transition-all flex items-center justify-center gap-2">
+                        EXPLORE DIVISION <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Division 2 -->
+                <div class="glass-panel p-8 rounded-xl flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl font-mono">
+                                <i class="fa-solid fa-shield"></i>
+                            </span>
+                            <span class="font-mono text-xs text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded border border-blue-500/20">UNIT 02</span>
+                        </div>
+                        <h3 class="font-mono font-bold text-xl text-white mb-3">BLUE TEAM</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-6">
+                            Pertahanan sistem, pemantauan ancaman real-time (SIEM), analisis log, pengerasan sistem (hardening), dan respons insiden darurat.
+                        </p>
+                    </div>
+                    <button onclick="openDivisionModal('Blue Team', 'Unit defensif yang bertugas menjaga perimeter jaringan, mendeteksi anomali, melakukan threat hunting, dan merespons insiden keamanan dengan cepat.')" class="w-full py-2.5 rounded-lg border border-blue-500/40 text-blue-400 hover:bg-blue-500 hover:text-black font-mono text-xs font-bold uppercase transition-all flex items-center justify-center gap-2">
+                        EXPLORE DIVISION <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Division 3 -->
+                <div class="glass-panel p-8 rounded-xl flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-xl font-mono">
+                                <i class="fa-solid fa-network-wired"></i>
+                            </span>
+                            <span class="font-mono text-xs text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded border border-purple-500/20">UNIT 03</span>
+                        </div>
+                        <h3 class="font-mono font-bold text-xl text-white mb-3">PURPLE TEAM</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-6">
+                            Kolaborasi aktif antara Red Team dan Blue Team untuk memaksimalkan efektivitas deteksi ancaman dan memperbaiki celah keamanan secara berkelanjutan.
+                        </p>
+                    </div>
+                    <button onclick="openDivisionModal('Purple Team', 'Pendekatan kolaboratif yang menggabungkan keahlian ofensif dan defensif untuk memastikan setiap simulasi serangan langsung meningkatkan kapabilitas deteksi.')" class="w-full py-2.5 rounded-lg border border-purple-500/40 text-purple-400 hover:bg-purple-500 hover:text-black font-mono text-xs font-bold uppercase transition-all flex items-center justify-center gap-2">
+                        EXPLORE DIVISION <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Division 4 -->
+                <div class="glass-panel p-8 rounded-xl flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl font-mono">
+                                <i class="fa-solid fa-magnifying-glass-dollar"></i>
+                            </span>
+                            <span class="font-mono text-xs text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded border border-cyan-500/20">UNIT 04</span>
+                        </div>
+                        <h3 class="font-mono font-bold text-xl text-white mb-3">DIGITAL FORENSICS</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-6">
+                            Analisis bukti digital, pemulihan data artefak, reverse engineering malware, dan investigasi mendalam terhadap insiden keamanan siber.
+                        </p>
+                    </div>
+                    <button onclick="openDivisionModal('Digital Forensics', 'Unit investigasi yang mengumpulkan, mengawetkan, dan menganalisis artefak digital untuk mengungkap akar permasalahan dari suatu insiden.')" class="w-full py-2.5 rounded-lg border border-cyan-500/40 text-cyan-400 hover:bg-cyan-500 hover:text-black font-mono text-xs font-bold uppercase transition-all flex items-center justify-center gap-2">
+                        EXPLORE DIVISION <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Division 5 -->
+                <div class="glass-panel p-8 rounded-xl flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-lg bg-green-500/10 border border-green-500/30 flex items-center justify-center text-green-400 text-xl font-mono">
+                                <i class="fa-solid fa-flask"></i>
+                            </span>
+                            <span class="font-mono text-xs text-green-400 bg-green-500/10 px-2.5 py-1 rounded border border-green-500/20">UNIT 05</span>
+                        </div>
+                        <h3 class="font-mono font-bold text-xl text-white mb-3">SECURITY RESEARCH</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-6">
+                            Penelitian kerentanan arsitektur baru, pengembangan alat uji keamanan kustom, dan publikasi advisory keamanan yang bertanggung jawab.
+                        </p>
+                    </div>
+                    <button onclick="openDivisionModal('Security Research', 'Pusat riset inovasi teknologi siber, penemuan celah baru sebelum dieksploitasi pihak tidak bertanggung jawab, dan publikasi riset.')" class="w-full py-2.5 rounded-lg border border-green-500/40 text-green-400 hover:bg-green-500 hover:text-black font-mono text-xs font-bold uppercase transition-all flex items-center justify-center gap-2">
+                        EXPLORE DIVISION <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Division 6 -->
+                <div class="glass-panel p-8 rounded-xl flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-lg bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center text-yellow-400 text-xl font-mono">
+                                <i class="fa-solid fa-flag"></i>
+                            </span>
+                            <span class="font-mono text-xs text-yellow-400 bg-yellow-500/10 px-2.5 py-1 rounded border border-yellow-500/20">UNIT 06</span>
+                        </div>
+                        <h3 class="font-mono font-bold text-xl text-white mb-3">CTF SQUAD</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-6">
+                            Tim khusus kompetisi Capture The Flag (CTF) yang berfokus mengasah ketajaman problem solving, cryptography, web exploitation, dan binary analysis.
+                        </p>
+                    </div>
+                    <button onclick="openDivisionModal('CTF Squad', 'Skuad kompetitif yang mewakili Terminal Force dalam berbagai ajang kompetisi hacking tingkat nasional maupun internasional.')" class="w-full py-2.5 rounded-lg border border-yellow-500/40 text-yellow-400 hover:bg-yellow-500 hover:text-black font-mono text-xs font-bold uppercase transition-all flex items-center justify-center gap-2">
+                        EXPLORE DIVISION <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS & LABS SECTION -->
+    <section id="projects" class="py-24 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-neonBlue/10 bg-black/40">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="font-mono text-xs text-neonCyan uppercase tracking-widest bg-neonBlue/10 px-3 py-1 rounded-full border border-neonBlue/30">
+                    // RESEARCH & LABS
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold mt-4 uppercase tracking-tight">
+                    FEATURED <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonBlue to-neonCyan">PROJECTS</span>
+                </h2>
+                <p class="text-gray-400 mt-4 text-sm sm:text-base">
+                    Eksplorasi proyek percontohan dan platform simulasi latihan keamanan siber buatan internal tim.
+                </p>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">
+                <!-- Injected via JavaScript for clean dynamic rendering -->
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE TERMINAL SECTION -->
+    <section id="terminal" class="py-24 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-neonBlue/10">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="font-mono text-xs text-neonGreen uppercase tracking-widest bg-neonGreen/10 px-3 py-1 rounded-full border border-neonGreen/30">
+                    // INTERACTIVE INTERFACE
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold mt-4 uppercase tracking-tight">
+                    COMMAND LINE <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonGreen to-neonCyan">INTERFACE</span>
+                </h2>
+                <p class="text-gray-400 mt-4 text-sm sm:text-base">
+                    Gunakan terminal interaktif di bawah ini. Ketik <span class="text-neonGreen font-mono">help</span> untuk melihat daftar perintah yang tersedia.
+                </p>
+            </div>
+
+            <!-- Full Terminal Box -->
+            <div class="glass-panel rounded-xl overflow-hidden shadow-2xl border border-neonGreen/30">
+                <div class="bg-black/80 px-4 py-3 flex items-center justify-between border-b border-neonGreen/20">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                    </div>
+                    <div class="font-mono text-xs text-neonGreen flex items-center gap-1.5">
+                        <i class="fa-solid fa-terminal"></i> visitor@terminal-force-cli
+                    </div>
+                    <div class="text-xs text-gray-500 font-mono">secure_shell</div>
+                </div>
+
+                <div id="cli-output" class="p-6 font-mono text-xs sm:text-sm bg-black/90 h-96 overflow-y-auto space-y-2 scanlines">
+                    <div class="text-gray-400">Terminal Force Secure Shell [Version 4.8.2]</div>
+                    <div class="text-gray-400">Type <span class="text-neonGreen font-bold">help</span> to view available system commands.</div>
+                    <div class="text-neonCyan">------------------------------------------------------------</div>
+                </div>
+
+                <!-- Terminal Input Form -->
+                <form id="cli-form" class="bg-black px-6 py-4 border-t border-neonGreen/20 flex items-center gap-3">
+                    <span class="text-neonGreen font-mono text-xs sm:text-sm font-bold whitespace-nowrap">visitor@terminal-force:~$</span>
+                    <input type="text" id="cli-input" autocomplete="off" autofocus placeholder="Type command here..." class="w-full bg-transparent text-white font-mono text-xs sm:text-sm focus:outline-none">
+                    <button type="submit" class="px-4 py-1.5 rounded bg-neonGreen/20 border border-neonGreen text-neonGreen font-mono text-xs hover:bg-neonGreen hover:text-black transition-all">EXEC</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- KNOWLEDGE SECTION -->
+    <section id="knowledge" class="py-24 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-neonBlue/10 bg-black/40">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="font-mono text-xs text-neonCyan uppercase tracking-widest bg-neonBlue/10 px-3 py-1 rounded-full border border-neonBlue/30">
+                    // KNOWLEDGE IS DEFENSE
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold mt-4 uppercase tracking-tight">
+                    CYBERSECURITY <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonBlue to-neonCyan">KNOWLEDGE BASE</span>
+                </h2>
+                <p class="text-gray-400 mt-4 text-sm sm:text-base">
+                    Materi edukasi dan wawasan foundational untuk membangun pemahaman siber yang kuat dan bertanggung jawab.
+                </p>
+            </div>
+
+            <!-- Knowledge Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="knowledge-container">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM MEMBERS SECTION -->
+    <section id="team" class="py-24 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-neonBlue/10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="font-mono text-xs text-neonCyan uppercase tracking-widest bg-neonBlue/10 px-3 py-1 rounded-full border border-neonBlue/30">
+                    // THE OPERATIVES
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold mt-4 uppercase tracking-tight">
+                    CORE <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonBlue to-neonCyan">TEAM MEMBERS</span>
+                </h2>
+                <p class="text-gray-400 mt-4 text-sm sm:text-base">
+                    Para punggawa di balik layar yang mendedikasikan keahlian mereka untuk riset dan keamanan siber.
+                </p>
+            </div>
+
+            <!-- Team Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Member 1 -->
+                <div class="glass-panel p-6 rounded-xl text-center group transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-neonBlue/10 border-2 border-neonBlue p-1 mb-6 group-hover:border-neonCyan transition-all overflow-hidden">
+                        <img src="https://placehold.co/200x200/0A0F1D/00A3FF?text=YN" alt="Alex Cipher" class="w-full h-full object-cover rounded-full filter grayscale group-hover:grayscale-0 transition-all">
+                    </div>
+                    <h3 class="font-mono font-bold text-lg text-white">Yusril "Noctveil"</h3>
+                    <p class="text-neonCyan font-mono text-xs mt-1">Lead Security Researcher</p>
+                    <p class="text-gray-400 text-xs mt-3 leading-relaxed">Spesialisasi dalam Vulnerability Assessment, Web Pentesting & Kernel Security.</p>
+                    <div class="flex items-center justify-center gap-3 mt-6 pt-4 border-t border-neonBlue/20">
+                        <a href="https://github.com" target="_blank" class="w-8 h-8 rounded bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan hover:bg-neonBlue hover:text-black transition-all"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="w-8 h-8 rounded bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan hover:bg-neonBlue hover:text-black transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://discord.com" target="_blank" class="w-8 h-8 rounded bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan hover:bg-neonBlue hover:text-black transition-all"><i class="fa-brands fa-discord"></i></a>
+                    </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="glass-panel p-6 rounded-xl text-center group transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-neonBlue/10 border-2 border-neonBlue p-1 mb-6 group-hover:border-neonCyan transition-all overflow-hidden">
+                        <img src="ASSETS/maya.png" alt="Nova Sec" class="w-full h-full object-cover rounded-full filter grayscale group-hover:grayscale-0 transition-all">
+                    </div>
+                    <h3 class="font-mono font-bold text-lg text-white">Maya "Luminous"</h3>
+                    <p class="text-neonCyan font-mono text-xs mt-1">Blue Team Commander</p>
+                    <p class="text-gray-400 text-xs mt-3 leading-relaxed">Ahli dalam SIEM monitoring, Incident Response, dan Network Defense Hardening.</p>
+                    <div class="flex items-center justify-center gap-3 mt-6 pt-4 border-t border-neonBlue/20">
+                        <a href="https://github.com" target="_blank" class="w-8 h-8 rounded bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan hover:bg-neonBlue hover:text-black transition-all"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="w-8 h-8 rounded bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan hover:bg-neonBlue hover:text-black transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://discord.com" target="_blank" class="w-8 h-8 rounded bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan hover:bg-neonBlue hover:text-black transition-all"><i class="fa-brands fa-discord"></i></a>
+                    </div>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="glass-panel p-6 rounded-xl text-center group transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-neonBlue/10 border-2 border-neonBlue p-1 mb-6 group-hover:border-neonCyan transition-all overflow-hidden">
+                        <img src="ASSETS/panji.png" alt="Rizki Zero" class="w-full h-full object-cover rounded-full filter grayscale group-hover:grayscale-0 transition-all">
+                    </div>
+                    <h3 class="font-mono font-bold text-lg text-white">Panji "D Rocks"</h3>
+                    <p class="text-neonCyan font-mono text-xs mt-1">CTF Lead & Crypto Analyst</p>
+                    <p class="text-gray-400 text-xs mt-3 leading-relaxed">Spesialis Cryptography, Reverse Engineering, dan Binary Exploitation.</p>
+                    <div class="flex items-center justify-center gap-3 mt-6 pt-4 border-t border-neonBlue/20">
+                        <a href="https://github.com" target="_blank" class="w-8 h-8 rounded bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan hover:bg-neonBlue hover:text-black transition-all"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="w-8 h-8 rounded bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan hover:bg-neonBlue hover:text-black transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://discord.com" target="_blank" class="w-8 h-8 rounded bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan hover:bg-neonBlue hover:text-black transition-all"><i class="fa-brands fa-discord"></i></a>
+                    </div>
+                </div>
+
+                <!-- Member 4 -->
+                <div class="glass-panel p-6 rounded-xl text-center group transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-neonBlue/10 border-2 border-neonBlue p-1 mb-6 group-hover:border-neonCyan transition-all overflow-hidden">
+                        <img src="https://placehold.co/200x200/0A0F1D/00A3FF?text=AE" alt="Elena AI" class="w-full h-full object-cover rounded-full filter grayscale group-hover:grayscale-0 transition-all">
+                    </div>
+                    <h3 class="font-mono font-bold text-lg text-white">Arif "Ebrel"</h3>
+                    <p class="text-neonCyan font-mono text-xs mt-1">Forensics Investigator</p>
+                    <p class="text-gray-400 text-xs mt-3 leading-relaxed">Fokus pada Digital Forensics, Malware Analysis, dan Artifact Recovery.</p>
+                    <div class="flex items-center justify-center gap-3 mt-6 pt-4 border-t border-neonBlue/20">
+                        <a href="https://github.com" target="_blank" class="w-8 h-8 rounded bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan hover:bg-neonBlue hover:text-black transition-all"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="w-8 h-8 rounded bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan hover:bg-neonBlue hover:text-black transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://discord.com" target="_blank" class="w-8 h-8 rounded bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan hover:bg-neonBlue hover:text-black transition-all"><i class="fa-brands fa-discord"></i></a>
+                    </div>
+                </div>
+
+                 <!-- Member 5 -->
+                <div class="glass-panel p-6 rounded-xl text-center group transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-neonBlue/10 border-2 border-neonBlue p-1 mb-6 group-hover:border-neonCyan transition-all overflow-hidden">
+                        <img src="https://placehold.co/200x200/0A0F1D/00A3FF?text=HB" alt="Elena AI" class="w-full h-full object-cover rounded-full filter grayscale group-hover:grayscale-0 transition-all">
+                    </div>
+                    <h3 class="font-mono font-bold text-lg text-white">Habib "Beqk"</h3>
+                    <p class="text-neonCyan font-mono text-xs mt-1">Forensics Investigator</p>
+                    <p class="text-gray-400 text-xs mt-3 leading-relaxed">Fokus pada Digital Forensics, Malware Analysis, dan Artifact Recovery.</p>
+                    <div class="flex items-center justify-center gap-3 mt-6 pt-4 border-t border-neonBlue/20">
+                        <a href="https://github.com" target="_blank" class="w-8 h-8 rounded bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan hover:bg-neonBlue hover:text-black transition-all"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="w-8 h-8 rounded bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan hover:bg-neonBlue hover:text-black transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://discord.com" target="_blank" class="w-8 h-8 rounded bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonCyan hover:bg-neonBlue hover:text-black transition-all"><i class="fa-brands fa-discord"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & RECRUITMENT SECTION -->
+    <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-neonBlue/10 bg-black/40">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left: Contact Form -->
+                <div class="glass-panel p-8 sm:p-10 rounded-xl">
+                    <span class="font-mono text-xs text-neonCyan uppercase tracking-widest bg-neonBlue/10 px-3 py-1 rounded-full border border-neonBlue/30">
+                        // SECURE CHANNEL
+                    </span>
+                    <h2 class="text-3xl font-extrabold mt-4 uppercase tracking-tight mb-6">
+                        CONTACT <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonBlue to-neonCyan">OPERATIONS</span>
+                    </h2>
+                    
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label class="block font-mono text-xs text-gray-300 mb-2">YOUR NAME / CALLSIGN</label>
+                            <input type="text" id="contact-name" required placeholder="e.g. Neo" class="w-full bg-black/60 border border-neonBlue/30 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-neonCyan transition-all font-mono">
+                        </div>
+                        <div>
+                            <label class="block font-mono text-xs text-gray-300 mb-2">SECURE EMAIL</label>
+                            <input type="email" id="contact-email" required placeholder="e.g. neo@matrix.net" class="w-full bg-black/60 border border-neonBlue/30 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-neonCyan transition-all font-mono">
+                        </div>
+                        <div>
+                            <label class="block font-mono text-xs text-gray-300 mb-2">SUBJECT</label>
+                            <input type="text" id="contact-subject" required placeholder="e.g. Research Collaboration" class="w-full bg-black/60 border border-neonBlue/30 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-neonCyan transition-all font-mono">
+                        </div>
+                        <div>
+                            <label class="block font-mono text-xs text-gray-300 mb-2">MESSAGE PAYLOAD</label>
+                            <textarea id="contact-message" rows="4" required placeholder="Write your message here..." class="w-full bg-black/60 border border-neonBlue/30 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-neonCyan transition-all font-mono"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3.5 rounded-lg bg-neonCyan hover:bg-neonBlue text-black font-mono font-bold text-xs uppercase tracking-wider transition-all shadow-neon-cyan flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> SEND MESSAGE
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Right: Join Recruitment Banner & Info -->
+                <div class="space-y-8">
+                    <!-- Recruitment Banner -->
+                    <div class="glass-panel p-8 sm:p-10 rounded-xl border border-neonGreen/30 relative overflow-hidden group">
+                        <div class="absolute -right-10 -bottom-10 text-neonGreen/10 text-9xl font-mono select-none pointer-events-none">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <span class="font-mono text-xs text-neonGreen uppercase tracking-widest bg-neonGreen/10 px-3 py-1 rounded-full border border-neonGreen/30">
+                            // RECRUITMENT ACTIVE
+                        </span>
+                        <h3 class="text-3xl font-extrabold mt-4 uppercase tracking-tight text-white">
+                            READY TO JOIN THE <span class="text-neonGreen">FORCE?</span>
+                        </h3>
+                        <p class="text-gray-400 mt-4 text-sm leading-relaxed">
+                            Build your skills. Defend the digital world. Become part of the force. Kami membuka kesempatan bagi talenta berdedikasi tinggi di bidang keamanan siber dan ethical hacking.
+                        </p>
+                        <div class="mt-6">
+                            <button onclick="openModal('joinModal')" class="px-8 py-3.5 rounded-lg bg-neonGreen hover:bg-neonCyan text-black font-mono font-bold text-xs uppercase tracking-wider transition-all shadow-neon-green flex items-center gap-2">
+                                <i class="fa-solid fa-user-plus"></i> APPLY NOW
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Social / Direct Contact Channels -->
+                    <div class="glass-panel p-6 rounded-xl space-y-4">
+                        <h4 class="font-mono font-bold text-sm text-white uppercase tracking-wider">// DIRECT CHANNELS</h4>
+                        <div class="grid grid-cols-2 gap-4 text-xs font-mono">
+                            <div class="flex items-center gap-3 text-gray-300">
+                                <i class="fa-solid fa-envelope text-neonCyan text-base"></i>
+                                <span>contact@terminalforce.io</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-300">
+                                <i class="fa-brands fa-discord text-neonCyan text-base"></i>
+                                <span>discord.gg/terminalforce</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-300">
+                                <i class="fa-brands fa-github text-neonCyan text-base"></i>
+                                <span>github.com/terminal-force</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-300">
+                                <i class="fa-brands fa-instagram text-neonCyan text-base"></i>
+                                <span>@terminalforce.sec</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-neonBlue/20 bg-black text-center relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded bg-neonBlue/10 border border-neonBlue flex items-center justify-center text-neonCyan font-mono font-bold text-sm">
+                    >_
+                </div>
+                <span class="font-mono font-bold text-white tracking-wider">TERMINAL<span class="text-neonBlue">FORCE</span></span>
+            </div>
+
+            <div class="text-xs text-gray-400 font-mono">
+                &copy; <span id="current-year">2026</span> TERMINAL FORCE. Built for learning. Driven by security.
+            </div>
+
+            <div class="flex items-center gap-4 text-sm">
+                <a href="https://github.com" target="_blank" class="text-gray-400 hover:text-neonCyan transition-colors"><i class="fa-brands fa-github"></i></a>
+                <a href="https://discord.com" target="_blank" class="text-gray-400 hover:text-neonCyan transition-colors"><i class="fa-brands fa-discord"></i></a>
+                <a href="https://instagram.com" target="_blank" class="text-gray-400 hover:text-neonCyan transition-colors"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- REUSABLE MODAL CONTAINER -->
+    <div id="appModal" class="fixed inset-0 z-50 hidden items-center justify-center px-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-panel max-w-lg w-full p-8 rounded-xl relative border border-neonBlue/50 shadow-2xl space-y-6">
+            <button onclick="closeModal('appModal')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Dynamic Modal Content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JOIN RECRUITMENT MODAL -->
+    <div id="joinModal" class="fixed inset-0 z-50 hidden items-center justify-center px-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-panel max-w-lg w-full p-8 rounded-xl relative border border-neonGreen/50 shadow-2xl space-y-6">
+            <button onclick="closeModal('joinModal')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="space-y-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neonGreen/10 border border-neonGreen/30 text-neonGreen font-mono text-xs">
+                    RECRUITMENT APPLICATION v4.8
+                </div>
+                <h3 class="font-mono font-bold text-2xl text-white">JOIN TERMINAL FORCE</h3>
+                <p class="text-gray-400 text-xs">Isi formulir pendaftaran rekrutmen di bawah ini. Kami akan meninjau kualifikasi dan keterampilan Anda.</p>
+                
+                <form id="join-form" class="space-y-4 pt-2">
+                    <div>
+                        <label class="block font-mono text-xs text-gray-300 mb-1">FULL NAME / CALLSIGN</label>
+                        <input type="text" required placeholder="e.g. John Doe" class="w-full bg-black/60 border border-neonGreen/30 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-neonGreen font-mono">
+                    </div>
+                    <div>
+                        <label class="block font-mono text-xs text-gray-300 mb-1">EMAIL ADDRESS</label>
+                        <input type="email" required placeholder="e.g. john@domain.com" class="w-full bg-black/60 border border-neonGreen/30 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-neonGreen font-mono">
+                    </div>
+                    <div>
+                        <label class="block font-mono text-xs text-gray-300 mb-1">PREFERRED DIVISION</label>
+                        <select class="w-full bg-black/60 border border-neonGreen/30 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-neonGreen font-mono">
+                            <option value="red">Red Team (Offensive Security)</option>
+                            <option value="blue">Blue Team (Defensive Operations)</option>
+                            <option value="purple">Purple Team (Collaborative)</option>
+                            <option value="forensics">Digital Forensics</option>
+                            <option value="research">Security Research</option>
+                            <option value="ctf">CTF Squad</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-mono text-xs text-gray-300 mb-1">WHY DO YOU WANT TO JOIN?</label>
+                        <textarea rows="3" required placeholder="Briefly explain your background & motivation..." class="w-full bg-black/60 border border-neonGreen/30 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-neonGreen font-mono"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3 rounded-lg bg-neonGreen hover:bg-neonCyan text-black font-mono font-bold text-xs uppercase tracking-wider transition-all shadow-neon-green">
+                        SUBMIT APPLICATION (DEMO)
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- CUSTOM NOTIFICATION POPUP (Replaces alert()) -->
+    <div id="notificationModal" class="fixed inset-0 z-50 hidden items-center justify-center px-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-panel max-w-sm w-full p-6 rounded-xl text-center space-y-4 border border-neonCyan/50">
+            <div id="notif-icon" class="w-12 h-12 mx-auto rounded-full bg-neonCyan/10 border border-neonCyan flex items-center justify-center text-neonCyan text-xl">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h4 id="notif-title" class="font-mono font-bold text-lg text-white">SYSTEM NOTIFICATION</h4>
+            <p id="notif-message" class="text-gray-300 text-xs leading-relaxed">Operation completed successfully.</p>
+            <button onclick="closeModal('notificationModal')" class="w-full py-2.5 rounded bg-neonCyan hover:bg-neonBlue text-black font-mono font-bold text-xs uppercase">
+                ACKNOWLEDGE
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- 1. DYNAMIC FOOTER YEAR ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- 2. MOBILE MENU TOGGLE ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- 3. SCROLL PROGRESS BAR & NAVBAR SHADOW ---
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+
+            const navbar = document.getElementById('navbar');
+            if (winScroll > 50) {
+                navbar.classList.add('shadow-lg', 'bg-black/90');
+            } else {
+                navbar.classList.remove('shadow-lg', 'bg-black/90');
+            }
+        });
+
+        // --- 4. PARTICLE BACKGROUND CANVAS ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const particlesArray = [];
+        const numberOfParticles = Math.floor(window.innerWidth / 30);
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(0, 163, 255, 0.6)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < numberOfParticles; i++) {
+            particlesArray.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+
+                // Connect particles with lines if close
+                for (let j = i; j < particlesArray.length; j++) {
+                    const dx = particlesArray[i].x - particlesArray[j].x;
+                    const dy = particlesArray[i].y - particlesArray[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 100) {
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${0.15 - distance/700})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // --- 5. ANIMATED STATISTIC COUNTERS ---
+        let animated = false;
+        const statsSection = document.getElementById('home');
+
+        function startCounters() {
+            const counters = document.querySelectorAll('.stat-counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                const speed = target / 30;
+                const updateCount = () => {
+                    count += speed;
+                    if (count < target) {
+                        counter.textContent = Math.ceil(count);
+                        setTimeout(updateCount, 40);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        window.addEventListener('load', () => {
+            startCounters();
+        });
+
+        // --- 6. PROJECTS DATA & RENDER ---
+        const projectsData = [
+            {
+                title: "Terminal Security Lab",
+                category: "Infrastructure",
+                status: "Active Demo",
+                description: "Sandbox interaktif untuk simulasi pengerasan sistem Linux dan manajemen firewall tingkat lanjut secara aman.",
+                badgeColor: "text-neonBlue bg-neonBlue/10 border-neonBlue/30"
+            },
+            {
+                title: "Network Defense Simulator",
+                category: "Defense",
+                status: "Beta Testing",
+                description: "Simulator deteksi intrusi jaringan real-time untuk mempelajari anomali lalu lintas data dan serangan DDoS.",
+                badgeColor: "text-neonCyan bg-neonCyan/10 border-neonCyan/30"
+            },
+            {
+                title: "Vulnerability Assessment Lab",
+                category: "Offensive",
+                status: "Live Demo",
+                description: "Modul pelatihan pemindaian kerentanan web aplikasi menggunakan OWASP Top 10 sebagai acuan utama.",
+                badgeColor: "text-green-400 bg-green-500/10 border-green-500/30"
+            },
+            {
+                title: "CTF Training Environment",
+                category: "Competitions",
+                status: "Online",
+                description: "Koleksi tantangan Capture The Flag mulai dari tingkat pemula hingga mahir mencakup web, crypto, dan forensics.",
+                badgeColor: "text-yellow-400 bg-yellow-500/10 border-yellow-500/30"
+            },
+            {
+                title: "Security Awareness Platform",
+                category: "Education",
+                status: "Active Demo",
+                description: "Modul pembelajaran interaktif pencegahan rekayasa sosial (social engineering) dan edukasi higienitas sandi.",
+                badgeColor: "text-purple-400 bg-purple-500/10 border-purple-500/30"
+            },
+            {
+                title: "Digital Forensics Playground",
+                category: "Forensics",
+                status: "Alpha",
+                description: "Lingkungan latihan investigasi artefak digital dan analisis dump memori untuk pemula keamanan siber.",
+                badgeColor: "text-red-400 bg-red-500/10 border-red-500/30"
+            }
+        ];
+
+        const projectsContainer = document.getElementById('projects-container');
+        projectsData.forEach(proj => {
+            const card = document.createElement('div');
+            card.className = "glass-panel p-8 rounded-xl flex flex-col justify-between group";
+            card.innerHTML = `
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs px-2.5 py-1 rounded border ${proj.badgeColor}">${proj.category}</span>
+                        <span class="font-mono text-[10px] text-gray-400 uppercase tracking-widest"><i class="fa-solid fa-circle text-[8px] text-neonGreen mr-1"></i>${proj.status}</span>
+                    </div>
+                    <h3 class="font-mono font-bold text-xl text-white mb-3 group-hover:text-neonCyan transition-colors">${proj.title}</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-6">${proj.description}</p>
+                </div>
+                <button onclick="openProjectModal('${proj.title}', '${proj.description}', '${proj.category}', '${proj.status}')" class="w-full py-2.5 rounded-lg border border-neonBlue/40 text-neonCyan hover:bg-neonBlue hover:text-black font-mono text-xs font-bold uppercase transition-all flex items-center justify-center gap-2">
+                    VIEW PROJECT <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            `;
+            projectsContainer.appendChild(card);
+        });
+
+        // --- 7. KNOWLEDGE DATA & RENDER ---
+        const knowledgeData = [
+            {
+                title: "Dasar-Dasar Jaringan Komputer",
+                difficulty: "Beginner",
+                desc: "Memahami model OSI, TCP/IP stack, pengalamatan IP, subnetting, dan protokol komunikasi dasar.",
+                color: "text-green-400 bg-green-500/10 border-green-500/30"
+            },
+            {
+                title: "Linux & Command Line Mastery",
+                difficulty: "Beginner",
+                desc: "Penguasaan manajemen file sistem Linux, permission, text processing, dan otomasi skrip dasar.",
+                color: "text-green-400 bg-green-500/10 border-green-500/30"
+            },
+            {
+                title: "Fundamental Cybersecurity",
+                difficulty: "Intermediate",
+                desc: "Konsep CIA Triad, manajemen risiko, kontrol akses, kriptografi simetris dan asimetris.",
+                color: "text-yellow-400 bg-yellow-500/10 border-yellow-500/30"
+            },
+            {
+                title: "Web Security & OWASP Top 10",
+                difficulty: "Intermediate",
+                desc: "Analisis kerentanan umum seperti SQL Injection, Cross-Site Scripting (XSS), dan Broken Authentication.",
+                color: "text-yellow-400 bg-yellow-500/10 border-yellow-500/30"
+            },
+            {
+                title: "Ethical Hacking Methodology",
+                difficulty: "Advanced",
+                desc: "Tahapan penetration testing: Reconnaissance, Scanning, Gaining Access, Maintaining Access, dan Reporting.",
+                color: "text-red-400 bg-red-500/10 border-red-500/30"
+            },
+            {
+                title: "Capture The Flag (CTF) Strategies",
+                difficulty: "Intermediate",
+                desc: "Teknik pemecahan masalah cepat, analisis payload, reverse engineering, dan strategi kompetisi.",
+                color: "text-yellow-400 bg-yellow-500/10 border-yellow-500/30"
+            }
+        ];
+
+        const knowledgeContainer = document.getElementById('knowledge-container');
+        knowledgeData.forEach(item => {
+            const card = document.createElement('div');
+            card.className = "glass-panel p-8 rounded-xl flex flex-col justify-between group";
+            card.innerHTML = `
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs px-2.5 py-1 rounded border ${item.color}">${item.difficulty}</span>
+                        <i class="fa-solid fa-graduation-cap text-neonCyan text-lg"></i>
+                    </div>
+                    <h3 class="font-mono font-bold text-lg text-white mb-3 group-hover:text-neonCyan transition-colors">${item.title}</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-6">${item.desc}</p>
+                </div>
+                <button onclick="openKnowledgeModal('${item.title}', '${item.desc}', '${item.difficulty}')" class="w-full py-2.5 rounded-lg border border-neonCyan/40 text-neonCyan hover:bg-neonCyan hover:text-black font-mono text-xs font-bold uppercase transition-all flex items-center justify-center gap-2">
+                    READ MORE <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            `;
+            knowledgeContainer.appendChild(card);
+        });
+
+        // --- 8. INTERACTIVE TERMINAL EMULATOR LOGIC ---
+        const cliOutput = document.getElementById('cli-output');
+        const cliForm = document.getElementById('cli-form');
+        const cliInput = document.getElementById('cli-input');
+
+        const commandResponses = {
+            'help': `Available commands:\n` +
+                    `  help      - Display available commands\n` +
+                    `  about     - Learn about Terminal Force\n` +
+                    `  divisions - View team divisions\n` +
+                    `  projects  - Explore team projects\n` +
+                    `  team      - Meet our core team members\n` +
+                    `  contact   - Get contact information\n` +
+                    `  date      - Display current date and time\n` +
+                    `  clear     - Clear terminal screen`,
+            'about': `TERMINAL FORCE adalah kolektif peneliti keamanan siber, ethical hacking, dan pertahanan digital. Misi kami: ACCESS THE UNKNOWN. SECURE THE FUTURE.`,
+            'divisions': `Active Divisions:\n  1. Red Team (Offensive Security)\n  2. Blue Team (Defensive Operations)\n  3. Purple Team (Collaborative Defense)\n  4. Digital Forensics\n  5. Security Research\n  6. CTF Squad`,
+            'projects': `Featured Projects:\n  - Terminal Security Lab\n  - Network Defense Simulator\n  - Vulnerability Assessment Lab\n  - CTF Training Environment\n  - Security Awareness Platform\n  - Digital Forensics Playground`,
+            'team': `Core Operatives:\n  - Alex "Cipher" (Lead Researcher)\n  - Sarah "Nova" (Blue Team Commander)\n  - Rizki "Zero" (CTF Lead)\n  - Elena "Byte" (Forensics Investigator)`,
+            'contact': `Secure Channels:\n  Email: contact@terminalforce.io\n  Discord: discord.gg/terminalforce\n  GitHub: github.com/terminal-force`
+        };
+
+        cliForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const cmd = cliInput.value.trim().toLowerCase();
+            if (!cmd) return;
+
+            // Echo command
+            const userEcho = document.createElement('div');
+            userEcho.innerHTML = `<span class="text-neonGreen">visitor@terminal-force:~$</span> <span class="text-white">${escapeHtml(cliInput.value)}</span>`;
+            cliOutput.appendChild(userEcho);
+
+            if (cmd === 'clear') {
+                cliOutput.innerHTML = `
+                    <div class="text-gray-400">Terminal Force Secure Shell [Version 4.8.2]</div>
+                    <div class="text-gray-400">Type <span class="text-neonGreen font-bold">help</span> to view available system commands.</div>
+                    <div class="text-neonCyan">------------------------------------------------------------</div>
+                `;
+            } else if (cmd === 'date') {
+                const dateDiv = document.createElement('div');
+                dateDiv.className = "text-neonCyan whitespace-pre-line";
+                dateDiv.textContent = `Current System Date/Time: ${new Date().toUTCString()}`;
+                cliOutput.appendChild(dateDiv);
+            } else if (commandResponses[cmd]) {
+                const respDiv = document.createElement('div');
+                respDiv.className = "text-gray-300 whitespace-pre-line";
+                respDiv.textContent = commandResponses[cmd];
+                cliOutput.appendChild(respDiv);
+            } else {
+                const errDiv = document.createElement('div');
+                errDiv.className = "text-red-400";
+                errDiv.textContent = `Command not recognized: '${cmd}'. Type 'help' for valid commands.`;
+                cliOutput.appendChild(errDiv);
+            }
+
+            cliInput.value = '';
+            cliOutput.scrollTop = cliOutput.scrollHeight;
+        });
+
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        // --- 9. MODAL MANAGEMENT SYSTEM ---
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+            document.getElementById(modalId).classList.add('flex');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('flex');
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        function openDivisionModal(title, desc) {
+            const content = `
+                <div class="space-y-4">
+                    <span class="font-mono text-xs text-neonCyan bg-neonBlue/10 px-3 py-1 rounded border border-neonBlue/30">DIVISION DETAILS</span>
+                    <h3 class="font-mono font-bold text-2xl text-white">${title}</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">${desc}</p>
+                    <div class="pt-4 border-t border-neonBlue/20">
+                        <button onclick="closeModal('appModal')" class="w-full py-2.5 rounded bg-neonBlue text-black font-mono text-xs font-bold uppercase">CLOSE</button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('modal-content').innerHTML = content;
+            openModal('appModal');
+        }
+
+        function openProjectModal(title, desc, category, status) {
+            const content = `
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="font-mono text-xs text-neonCyan bg-neonBlue/10 px-3 py-1 rounded border border-neonBlue/30">${category}</span>
+                        <span class="font-mono text-xs text-neonGreen"><i class="fa-solid fa-circle text-[8px] mr-1"></i>${status}</span>
+                    </div>
+                    <h3 class="font-mono font-bold text-2xl text-white">${title}</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">${desc}</p>
+                    <p class="text-xs text-gray-400 italic">Note: Proyek ini ditampilkan sebagai demonstrasi riset keamanan siber dan simulasi lab.</p>
+                    <div class="pt-4 border-t border-neonBlue/20">
+                        <button onclick="closeModal('appModal')" class="w-full py-2.5 rounded bg-neonCyan text-black font-mono text-xs font-bold uppercase">CLOSE</button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('modal-content').innerHTML = content;
+            openModal('appModal');
+        }
+
+        function openKnowledgeModal(title, desc, difficulty) {
+            const content = `
+                <div class="space-y-4">
+                    <span class="font-mono text-xs text-yellow-400 bg-yellow-500/10 px-3 py-1 rounded border border-yellow-500/30">LEVEL: ${difficulty}</span>
+                    <h3 class="font-mono font-bold text-2xl text-white">${title}</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">${desc}</p>
+                    <p class="text-xs text-gray-400">Materi ini berfokus pada pembelajaran legal, pemahaman arsitektur siber, dan praktik pertahanan yang bertanggung jawab.</p>
+                    <div class="pt-4 border-t border-neonBlue/20">
+                        <button onclick="closeModal('appModal')" class="w-full py-2.5 rounded bg-neonCyan text-black font-mono text-xs font-bold uppercase">CLOSE</button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('modal-content').innerHTML = content;
+            openModal('appModal');
+        }
+
+        // --- 10. FORM VALIDATION & NOTIFICATION POPUP ---
+        function showNotification(title, message, isSuccess = true) {
+            document.getElementById('notif-title').textContent = title;
+            document.getElementById('notif-message').textContent = message;
+            const iconDiv = document.getElementById('notif-icon');
+            if (isSuccess) {
+                iconDiv.className = "w-12 h-12 mx-auto rounded-full bg-neonCyan/10 border border-neonCyan flex items-center justify-center text-neonCyan text-xl";
+                iconDiv.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+            } else {
+                iconDiv.className = "w-12 h-12 mx-auto rounded-full bg-red-500/10 border border-red-500 flex items-center justify-center text-red-400 text-xl";
+                iconDiv.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
+            }
+            openModal('notificationModal');
+        }
+
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const subject = document.getElementById('contact-subject').value.trim();
+            const message = document.getElementById('contact-message').value.trim();
+
+            if (!name || !email || !subject || !message) {
+                showNotification('VALIDATION ERROR', 'Semua field formulir harus diisi dengan benar.', false);
+                return;
+            }
+
+            showNotification('DEMO MODE ACTIVE', 'Pesan Anda telah divalidasi secara lokal. Karena website ini berbasis statis, pesan belum terhubung ke backend server eksternal.', true);
+            document.getElementById('contact-form').reset();
+        });
+
+        document.getElementById('join-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            closeModal('joinModal');
+            showNotification('APPLICATION RECEIVED', 'Terima kasih telah mendaftar. Data rekrutmen Anda telah dicatat dalam mode demo.', true);
+            document.getElementById('join-form').reset();
+        });
+    </script>
+</body>
+</html>
